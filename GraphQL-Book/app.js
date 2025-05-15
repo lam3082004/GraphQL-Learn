@@ -1,5 +1,5 @@
-import express from 'express'
-import { ApolloServer } from 'apollo-server-express' 
+import express from 'express';
+import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 
 // Load schema % resolvers
@@ -10,7 +10,7 @@ const server = new ApolloServer({
     typeDefs,
     resolvers,
     plugins: [
-        ApolloServerPluginLandingPageLocalDefault({ embed: true }), // 👈 cái này là quan trọng
+        ApolloServerPluginLandingPageLocalDefault({ embed: true }), // 
       ],
 })
 
