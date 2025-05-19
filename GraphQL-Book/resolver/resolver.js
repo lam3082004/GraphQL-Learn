@@ -1,6 +1,8 @@
 import {books, authors} from '../data/static.js'
 
 const resolvers = {
+
+    // Query
     Query: {
         books: () => books,
         book: (parent, args) => books.find(book => book.id == args.id),
@@ -12,6 +14,12 @@ const resolvers = {
     },
     Author: {
         books: (parent, args) => books.filter(book => book.authorId == parent.id)
+    },
+
+    // Mutation 
+    Mutation: {
+        createAuthor: (parent, args) => args,
+        createBook: (parent, args) => args
     }
 }
 
