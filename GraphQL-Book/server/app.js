@@ -1,9 +1,10 @@
+// require('dotenv').config();
+import dotenv from 'dotenv';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 import mongoose from 'mongoose';
 // const mongoose = require('mongoose')
-
 // Load schema % resolvers
 import typeDefs from './schema/schema.js'
 import resolvers from './resolver/resolver.js'
@@ -12,10 +13,13 @@ import mongoDataMethods from './data/db.js'
 // const mongoDataMethods = require('./data/db.js')
 
 // conenect DB
+dotenv.config();
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb+srv://lam3082004:lam3082004@learngraphql.xx1yjtk.mongodb.net/',)
+        await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@learngraphql.xx1yjtk.mongodb.net/`,)
+        // await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@learngraphql.xx1yjtk.net/?retryWrites=true&w=majority`);
         
+        console.log(process.env.DB_USERNAME, process.env.DB_PASSWORD);
         console.log("MongoDB connnected")
     } catch (error) {
         console.log(error.message)
